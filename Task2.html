@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=width, initial-scale=1.0">
+<title>Contact Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0; padding: 0;
+        height: 100vh; display: flex; justify-content: center; align-items: center;
+        overflow: hidden;
+    }
+    video {
+        position: fixed; top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover; z-index: -1;
+    }
+    .container {
+        background: rgba(255,255,255,0.6);
+        padding: 20px; border-radius: 8px;
+        max-width: 400px; width: 100%;
+        color: #8B4513; text-align: center;
+    }
+    input, textarea, button {
+        width: 100%; padding: 8px; margin: 8px 0;
+        border: 1px solid #ddd; border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+        background: #8B4513; color: #fff; cursor: pointer;
+        font-weight: bold;
+    }
+    button:hover { background: #5C2E0B; }
+</style>
+</head>
+<body>
+
+<video autoplay muted loop>
+    <source src="C:\Users\Dell\OneDrive - Nile University\Desktop\guitar-field\guitar-field.mp4">
+</video>
+
+<div class="container">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+        <input type="text" id="fullName" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Message" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!name || !email || !subject || !message) {
+        alert("All fields are required.");
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    alert("Form submitted successfully!");
+    this.reset();
+});
+</script>
+
+</body>
+</html>
